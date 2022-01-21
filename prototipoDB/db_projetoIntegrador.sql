@@ -8,8 +8,8 @@ razao_social VARCHAR (100),
 email VARCHAR(50),
 senha VARCHAR (10),
 tipo ENUM ("INSTITUICOES", "EMPRESA", "GOV"),
-localidade VARCHAR (100),
-contato VARCHAR (100)
+localidade VARCHAR (100),tb_usuarios
+contato VARCHAR (100)postagem
 );
 
 CREATE TABLE tb_postagem (
