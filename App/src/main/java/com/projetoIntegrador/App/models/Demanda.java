@@ -2,6 +2,6 @@ package com.projetoIntegrador.App.models;
 
 public enum Demanda {
 
-	oferta,
-	procura
+	Oferta, // 0
+	Procura // 1
 }

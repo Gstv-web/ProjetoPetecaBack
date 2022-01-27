@@ -33,25 +33,25 @@ public class Postagem {
 	
 	@NotBlank
 	@Size(min = 5, max = 100)
-	private String endereco;
+	private String localidade;
 	
 	@NotBlank
-	@Size(min = 5, max = 20)
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	private Categoria tipoPostagem; // tipo de postagem (doação roupa, doação de alimento, vaga de curso livre, vaga de curso profissionalizante)
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Demanda demanda;
 	
-	@NotBlank
-	@Size(min = 5, max = 20)
+
 	private String visualizacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
+
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(long id) {
@@ -59,7 +59,7 @@ public class Postagem {
 	}
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
@@ -67,31 +67,31 @@ public class Postagem {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getLocalidade() {
+		return this.localidade;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setLocalidade(String localidade) {
+		this.localidade = localidade;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Categoria getTipoPostagem() {
+		return this.tipoPostagem;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoPostagem(Categoria tipoPostagem) {
+		this.tipoPostagem = tipoPostagem;
 	}
 
 	public Demanda getDemanda() {
-		return demanda;
+		return this.demanda;
 	}
 
 	public void setDemanda(Demanda demanda) {
@@ -99,7 +99,7 @@ public class Postagem {
 	}
 
 	public String getVisualizacao() {
-		return visualizacao;
+		return this.visualizacao;
 	}
 
 	public void setVisualizacao(String visualizacao) {
@@ -107,12 +107,12 @@ public class Postagem {
 	}
 
 	public Date getData() {
-		return data;
+		return this.data;
 	}
 
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+		
 	
 }
