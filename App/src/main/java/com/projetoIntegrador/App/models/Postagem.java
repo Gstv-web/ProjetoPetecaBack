@@ -8,12 +8,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagem")
@@ -35,7 +38,7 @@ public class Postagem {
 	@Size(min = 5, max = 100)
 	private String localidade;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Categoria tipoPostagem; // tipo de postagem (doação roupa, doação de alimento, vaga de curso livre, vaga de curso profissionalizante)
 	
@@ -43,6 +46,9 @@ public class Postagem {
 	@Enumerated(EnumType.STRING)
 	private Demanda demanda;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private User user;		
 
 	private String visualizacao;
 	
@@ -113,6 +119,16 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 		
 	
 }
