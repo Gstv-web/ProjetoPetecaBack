@@ -1,13 +1,20 @@
 package com.projetoIntegrador.App.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -29,18 +36,22 @@ public class User {
 	@Size(min = 5, max = 50)
 	private String senha;
 	
-	@NotBlank
-	private String tipo;
+	@NotNull
+	private TipoEntidade tipo;
 	
-	@NotBlank
+
 	private String endereco;
 	
 	@NotBlank
 	private String contato;
-
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("user")
+	private List<Postagem> postagem;
+
+
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(long id) {
@@ -48,7 +59,7 @@ public class User {
 	}
 
 	public String getRazaoSocial() {
-		return razaoSocial;
+		return this.razaoSocial;
 	}
 
 	public void setRazaoSocial(String razaoSocial) {
@@ -56,7 +67,7 @@ public class User {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -64,23 +75,23 @@ public class User {
 	}
 
 	public String getSenha() {
-		return senha;
+		return this.senha;
 	}
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public TipoEntidade getTipo() {
+		return this.tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoEntidade tipo) {
 		this.tipo = tipo;
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return this.endereco;
 	}
 
 	public void setEndereco(String endereco) {
@@ -88,10 +99,22 @@ public class User {
 	}
 
 	public String getContato() {
-		return contato;
+		return this.contato;
 	}
 
 	public void setContato(String contato) {
 		this.contato = contato;
-	}	
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+	
+	
+	
+	
 }
