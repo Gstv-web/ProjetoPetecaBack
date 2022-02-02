@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.projetoIntegrador.App.models.User;
+import com.projetoIntegrador.App.models.UserLogin;
 import com.projetoIntegrador.App.repositories.UserRepository;
 
 	@Service
@@ -28,7 +29,7 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 	
 	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<User> usuario = repository.findByEmail(user.get().getUsuario());
+		Optional<User> usuario = repository.findByEmail(user.get().getEmail());
 		
 		if(usuario.isPresent()) {
 			if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
@@ -38,7 +39,7 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 				String authHeader = "Basic" + new String(encodedAuth);
 				
 				user.get().setToken(authHeader);
-				user.get().setNome(usuario.get().getRazaoSocial());
+				user.get().setRazaoSocial(usuario.get().getRazaoSocial());
 				
 				return user;
 			}
