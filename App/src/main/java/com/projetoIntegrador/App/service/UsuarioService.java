@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.eCommerce.lojaGames.model.Usuario;
-import com.eCommerce.lojaGames.model.UsuarioLogin;
-import com.eCommerce.lojaGames.repository.UsuarioRepository;
-
-	@Service
+@Service
 	public class UsuarioService {
 
 	@Autowired
