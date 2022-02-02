@@ -39,7 +39,7 @@ public class UserController {
 	
 	@GetMapping("/{user}")
 	public ResponseEntity<List<User>> GetByUser(@PathVariable String user){
-		return ResponseEntity.ok(repository.findAllByRazaoSocialContainingIgnoreCase(user));
+		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(user));
 	}
 	
 	@PostMapping("/new")
