@@ -18,16 +18,20 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 	@Autowired
 	private UserRepository repository;
 	
-	public User CadastrarUsuario(User usuario) {
+	public Optional <User> cadastrarUsuario(User usuario) {
+		Optional<User> optional = repository.findByEmail(usuario.getEmail());
+		if(optional.isPresent()) {
+			return Optional.empty();
+		}
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 		
-		return repository.save(usuario);
+		return Optional.ofNullable(repository.save(usuario));
 	}
 	
-	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
+	public Optional<UserLogin>logar(Optional<UserLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<User> usuario = repository.findByEmail(user.get().getEmail());
 		
@@ -36,7 +40,7 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 			
 				String auth = user.get().getEmail() + ":" + user.get().getSenha();
 				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-				String authHeader = "Basic" + new String(encodedAuth);
+				String authHeader = "Basic " + new String(encodedAuth);
 				
 				user.get().setToken(authHeader);
 				user.get().setRazaoSocial(usuario.get().getRazaoSocial());
