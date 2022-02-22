@@ -26,7 +26,7 @@ public class SwaggerConfig {
 					.url("http://springdoc.org"))
 				.contact(new Contact()
 					.name("Projeto Peteca")
-					.url("https://github.com/Gstv-web/ProjetoIntegrador")
+					.url("https://linktr.ee/p2eteca")
 					.email("p2eteca@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
 					.description("Github")

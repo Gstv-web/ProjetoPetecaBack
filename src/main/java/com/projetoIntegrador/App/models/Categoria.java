@@ -1,11 +1,22 @@
 package com.projetoIntegrador.App.models;
 
 public enum Categoria {
-    DoaçãoDeRoupa, // 0
-    DoaçãoDeAlimentos, // 1
-    VagaDeCursoLivre, // 2
-    VagaDeCursoProfissionalizante, // 3
-    VagaContraturno, // 4
-    VagaOficinas, // 5
-    VagaSocial // 6
+    DOACAODEROUPA("Doação de roupa"), 
+    DOACAODEALIMENTOS("Doação de alimentos"), 
+    VAGACURSOLIVRE("Vaga de curso livre"), 
+    VAGACURSOPROFISSIONALIZANTE("Vaga de curso profissionalizante"), 
+    VAGACONTRATURNO("Vaga de contra turno"), 
+    VAGAOFICINAS("Vaga oficinas"), 
+    VAGASOCIAL("Vaga social");
+    
+    private String categoria;
+
+    Categoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    public String getCategoria() {
+        return categoria;
+    }
+    
 }

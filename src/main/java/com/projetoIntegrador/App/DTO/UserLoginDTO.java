@@ -1,17 +1,27 @@
-package com.projetoIntegrador.App.models;
+package com.projetoIntegrador.App.DTO;
 
-public class UserLogin {
+public class UserLoginDTO {
 	
 	private String razaoSocial;
-	
 	private String email;
-	
 	private String senha;
-	
 	private String token;
 
+
+	public UserLoginDTO(String razaoSocial, String email, String senha, String token) {
+		this.razaoSocial = razaoSocial;
+		this.email = email;
+		this.senha = senha;
+		this.token = token;
+	}
+
+	
+	public UserLoginDTO() {
+	}
+	
+
 	public String getRazaoSocial() {
-		return razaoSocial;
+		return this.razaoSocial;
 	}
 
 	public void setRazaoSocial(String razaoSocial) {
@@ -19,7 +29,7 @@ public class UserLogin {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -27,7 +37,7 @@ public class UserLogin {
 	}
 
 	public String getSenha() {
-		return senha;
+		return this.senha;
 	}
 
 	public void setSenha(String senha) {
@@ -35,13 +45,12 @@ public class UserLogin {
 	}
 
 	public String getToken() {
-		return token;
+		return this.token;
 	}
 
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
 	
 
 }

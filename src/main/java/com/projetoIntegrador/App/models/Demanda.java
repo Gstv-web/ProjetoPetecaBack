@@ -2,6 +2,17 @@ package com.projetoIntegrador.App.models;
 
 public enum Demanda {
 
-	Oferta, // 0
-	Procura // 1
+	OFERTA("Oferta"), 
+	PPROCURA("Procura");
+	
+	private String demanda;
+
+	Demanda(String demanda) {
+		this.demanda = demanda;
+	}
+
+	public String getDemanda() {
+		return demanda;
+	}
+
 }

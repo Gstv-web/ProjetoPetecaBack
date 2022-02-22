@@ -45,12 +45,13 @@ public class Postagem {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Demanda demanda;
-	
+
+	private String visualizacao;
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private User user;		
 
-	private String visualizacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoIntegrador.App.models.Postagem;
 import com.projetoIntegrador.App.repositories.PostagemRepository;
+import com.projetoIntegrador.App.service.PostagemService;
 
 @RestController
 @RequestMapping("/postagem")
@@ -24,32 +25,29 @@ public class PostagemController {
 	
 	@Autowired
 	private PostagemRepository repository;
+
+	@Autowired
+	private PostagemService postService;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<Postagem>> GetAll(){
-		return ResponseEntity.ok(repository.findAll());
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id){
-		return repository.findById(id)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+		return postService.findAllposts();
 	}
 
-	@GetMapping("/{postagem}") 
-	public ResponseEntity<List<Postagem>> GetByPostagem (@PathVariable String postagem)  {
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(postagem));
+
+	@GetMapping("/{titulo}") 
+	public ResponseEntity<List<Postagem>> GetByTitle(@PathVariable String titulo)  {
+		return postService.findByTitle(titulo);
 	}     
 
 	@PostMapping("/new")
-	public ResponseEntity <Postagem> newPostagem (@RequestBody Postagem newPostagem) {
-		return ResponseEntity.status(201).body(repository.save(newPostagem));
+	public ResponseEntity <Postagem> newPostagem (@RequestBody Postagem newPost) {
+		return postService.newPost(newPost);
 	}
 
 	@PutMapping("/edit")
-	public ResponseEntity <Postagem> editPostagem (@RequestBody Postagem editPostagem) {
-		return ResponseEntity.status (200).body(repository.save(editPostagem));
+	public ResponseEntity <Postagem> editPostagem (@RequestBody Postagem editPost) {
+		return postService.editPost(editPost);
 	}
 
 	@DeleteMapping ("/delete/{id}")

@@ -25,7 +25,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long UserId;
 	
 	@NotBlank
 	private String razaoSocial;
@@ -41,24 +41,43 @@ public class User {
 	
 	@NotNull
 	private TipoEntidade tipo;
-	
 
+	@NotBlank
 	private String endereco;
 	
 	@NotBlank
 	private String contato;
+
+	private String foto;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("user")
 	private List<Postagem> postagem;
+	
+	
 
+	public User(long UserId, String razaoSocial, String email, String senha, TipoEntidade tipo, String endereco, String contato, String foto, List<Postagem> postagem) {
+		this.UserId = UserId;
+		this.razaoSocial = razaoSocial;
+		this.email = email;
+		this.senha = senha;
+		this.tipo = tipo;
+		this.endereco = endereco;
+		this.contato = contato;
+		this.foto = foto;
+		this.postagem = postagem;
+	}
+	
+	
+	public User() {};
+	
 
-	public long getId() {
-		return this.id;
+	public long getUserId() {
+		return this.UserId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUserId(long UserId) {
+		this.UserId = UserId;
 	}
 
 	public String getRazaoSocial() {
@@ -109,14 +128,21 @@ public class User {
 		this.contato = contato;
 	}
 
+	public String getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	public List<Postagem> getPostagem() {
-		return postagem;
+		return this.postagem;
 	}
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
 	
 	
 	
