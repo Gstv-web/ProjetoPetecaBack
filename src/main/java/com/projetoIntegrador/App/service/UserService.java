@@ -68,9 +68,10 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 			if (encoder.matches(dto.getSenha(), resp.getSenha())) {
 				credentials = new CredentialsDTO(
 								resp.getUserId(),
+								resp.getRazaoSocial(),
 								basicTokenGenerator(dto.getEmail(), dto.getSenha()),
 								resp.getEmail(),
-								dto.getRazaoSocial(),
+								resp.getSenha(),
 								resp.getFoto());
 				return ResponseEntity.status(HttpStatus.OK).body(credentials);
 			} else {

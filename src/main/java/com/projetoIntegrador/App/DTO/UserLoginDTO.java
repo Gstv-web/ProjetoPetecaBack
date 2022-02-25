@@ -2,17 +2,13 @@ package com.projetoIntegrador.App.DTO;
 
 public class UserLoginDTO {
 	
-	private String razaoSocial;
 	private String email;
 	private String senha;
-	private String token;
 
 
-	public UserLoginDTO(String razaoSocial, String email, String senha, String token) {
-		this.razaoSocial = razaoSocial;
+	public UserLoginDTO(String email, String senha) {
 		this.email = email;
 		this.senha = senha;
-		this.token = token;
 	}
 
 	
@@ -20,13 +16,6 @@ public class UserLoginDTO {
 	}
 	
 
-	public String getRazaoSocial() {
-		return this.razaoSocial;
-	}
-
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
-	}
 
 	public String getEmail() {
 		return this.email;
@@ -42,14 +31,6 @@ public class UserLoginDTO {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getToken() {
-		return this.token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 	
 
