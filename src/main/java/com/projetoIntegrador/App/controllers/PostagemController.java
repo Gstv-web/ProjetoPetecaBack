@@ -20,7 +20,7 @@ import com.projetoIntegrador.App.service.PostagemService;
 
 @RestController
 @RequestMapping("/postagem")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 	
 	@Autowired
