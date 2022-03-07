@@ -128,7 +128,7 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 		}
 	}
 
-	public ResponseEntity<User> findById(Long id) {
+	public ResponseEntity<User> findUserById(Long id) {
 		return repository.findById(id
 		)					.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 							.orElseGet(() -> {

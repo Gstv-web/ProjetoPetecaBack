@@ -57,7 +57,7 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findUserById(@PathVariable long id) {
-		return userService.findById(id);
+		return userService.findUserById(id);
 	}
 
 	@GetMapping("/{razaoSocial}")
