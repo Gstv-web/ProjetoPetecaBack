@@ -60,7 +60,7 @@ public class UserController {
 		return userService.findUserById(id);
 	}
 
-	@GetMapping("/{razaoSocial}")
+	@GetMapping("/razao/{razaoSocial}")
 	public ResponseEntity<List<User>> GetByRazaoSocial(@PathVariable String razaoSocial){
 		return userService.getUserByRazaoSocial(razaoSocial);
 	}

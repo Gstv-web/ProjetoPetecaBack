@@ -128,9 +128,9 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 		}
 	}
 
-	public ResponseEntity<User> findUserById(Long id) {
-		return repository.findById(id
-		)					.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+	public ResponseEntity<User> findUserById(long id) {
+		return repository.findById(id)
+							.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 							.orElseGet(() -> {
 								throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não encontrado.");
 							});
