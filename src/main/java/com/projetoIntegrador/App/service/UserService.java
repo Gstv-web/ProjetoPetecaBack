@@ -128,6 +128,14 @@ import com.projetoIntegrador.App.repositories.UserRepository;
 		}
 	}
 
+	public ResponseEntity<User> findById(Long id) {
+		return repository.findById(id
+		)					.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+							.orElseGet(() -> {
+								throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não encontrado.");
+							});
+	}
+
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity deleteUser(Long id) {
 		Optional<User> optional = repository.findById(id);

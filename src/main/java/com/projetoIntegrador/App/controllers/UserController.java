@@ -55,6 +55,11 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> findUserById(@PathVariable long id) {
+		return userService.findById(id);
+	}
+
 	@GetMapping("/{razaoSocial}")
 	public ResponseEntity<List<User>> GetByRazaoSocial(@PathVariable String razaoSocial){
 		return userService.getUserByRazaoSocial(razaoSocial);

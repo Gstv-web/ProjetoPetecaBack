@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class PostagemService {
@@ -40,6 +41,15 @@ public class PostagemService {
         List<Postagem> postsByTitle = repository.findAllByTituloContainingIgnoreCase(titulo);
         return foundPosts(postsByTitle);
     }
+
+    public ResponseEntity<Postagem> findPostById(Long id) {
+        return repository.findById(id)
+                            .map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+                            .orElseGet(() -> {
+                                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não encontrado");
+                            });
+    }
+
 
     public ResponseEntity<Postagem> newPost(Postagem post) {
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(post));
