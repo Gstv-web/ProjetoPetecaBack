@@ -39,7 +39,7 @@ public class PostagemController {
 		return postService.findPostById(id);
 	}
 
-	@GetMapping("/{titulo}") 
+	@GetMapping("/titulo/{titulo}") 
 	public ResponseEntity<List<Postagem>> GetByTitle(@PathVariable String titulo)  {
 		return postService.findByTitle(titulo);
 	}     
