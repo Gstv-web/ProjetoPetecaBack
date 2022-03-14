@@ -3,6 +3,7 @@ package com.projetoIntegrador.App.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.projetoIntegrador.App.models.Categoria;
 import com.projetoIntegrador.App.models.Postagem;
 import com.projetoIntegrador.App.repositories.PostagemRepository;
 
@@ -52,6 +53,7 @@ public class PostagemService {
 
 
     public ResponseEntity<Postagem> newPost(Postagem post) {
+        post.getTipoPostagem().getCategoria().toString();
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(post));
     }
 
