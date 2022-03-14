@@ -31,7 +31,7 @@ public class Postagem {
 	private String titulo;
 	
 	@NotBlank
-	@Size(min = 5, max = 250)
+	@Size(min = 5, max = 500)
 	private String descricao;
 	
 	@NotBlank
