@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.projetoIntegrador.App.models.Categoria;
+import com.projetoIntegrador.App.models.Demanda;
 import com.projetoIntegrador.App.models.Postagem;
 import com.projetoIntegrador.App.repositories.PostagemRepository;
 
@@ -21,6 +22,8 @@ public class PostagemService {
     private ModelMapper mapper;
     @Autowired
     private PostagemRepository repository;
+
+    private Demanda demanda;
 
 
     public ResponseEntity<List<Postagem>> foundPosts(List<Postagem> posts) {
@@ -53,7 +56,9 @@ public class PostagemService {
 
 
     public ResponseEntity<Postagem> newPost(Postagem post) {
-        post.getTipoPostagem().getCategoria().toString();
+        post.getDemanda().getDemanda();
+        post.getTipoPostagem().getCategoria();
+        System.out.println(post.getDemanda().getDemanda());
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(post));
     }
 
